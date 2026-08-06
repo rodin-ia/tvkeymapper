@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">TV Key Mapper</string>
+    <string name="browse_title">TV Key Mapper</string>
+    <string name="description">
+        Go to accessibility settings and grant permission to Key Mapper service
+    </string>
+    
+    <string name="accessibility_service_description">
+        Key Mapper service for remote control buttons
+    </string>
+
+    <!-- Error messages -->
+    <string name="error_fragment_message">An error occurred</string>
+    <string name="dismiss_error">Dismiss</string>
+</resources>

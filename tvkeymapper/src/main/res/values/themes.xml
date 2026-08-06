@@ -1,0 +1,4 @@
+<resources>
+
+    <style name="Theme.KeyMapper" parent="android:style/Theme.DeviceDefault" />
+</resources>
