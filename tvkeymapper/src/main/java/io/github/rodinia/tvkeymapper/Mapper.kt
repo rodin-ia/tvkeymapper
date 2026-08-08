@@ -5,13 +5,19 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.accessibility.AccessibilityEvent
 
-const val KEY_FILMIX = KeyEvent.KEYCODE_STEM_1
-const val KEY_SMARTTUBE = KeyEvent.KEYCODE_TV_INPUT_COMPOSITE_1
-const val KEY_OTTP = 198
+const val KEY_FILMIX = KeyEvent.KEYCODE_STEM_1 //NETFLIX key
+const val KEY_SMARTTUBE = KeyEvent.KEYCODE_TV_INPUT_COMPOSITE_1 //youtube key 
+const val KEY_OTTP = 198 // Okko key code
 
 const val TAG = "mapper"
 
 class Mapper : AccessibilityService() {
+    private val keyMappings = mapOf(
+        KEY_FILMIX to "net.filmix.filmix",
+        KEY_SMARTTUBE to "org.smarttube.stable",
+        KEY_OTTP to "es.ottplayer.tv"
+   )
+
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
         return
     }
@@ -23,32 +29,18 @@ class Mapper : AccessibilityService() {
 
         Log.v(
             TAG,
-            "key=${KeyEvent.keyCodeToString(event.keyCode)} code=${event.keyCode} scan=${event.scanCode} action=${event.action}"
+            "key=${KeyEvent.keyCodeToString(event.keyCode)} " +
+                "code=${event.keyCode} " +
+                "scan=${event.scanCode} " +
+                "action=${event.action}"
         )
-        when (event.keyCode) {
-
-            KEY_FILMIX -> {
-                if (event.action == KeyEvent.ACTION_DOWN) {
-                    Runner(this).runPackage("net.filmix.filmix")
-                }
-                return true
+        val packageName = keyMappings[event.keyCode]
+        if (packageName != null) {
+            if (event.action == KeyEvent.ACTION_DOWN) {
+                Runner(this).runPackage(packageName)
             }
-
-            KEY_SMARTTUBE -> {
-                if (event.action == KeyEvent.ACTION_DOWN) {
-                    Runner(this).runPackage("org.smarttube.stable")
-                }
-                return true
-            }
-
-            KEY_OTTP -> {
-                if (event.action == KeyEvent.ACTION_DOWN) {
-                    Runner(this).runPackage("es.ottplayer.tv")
-                }
-                return true
-            }
+            return true
         }
-
         return super.onKeyEvent(event)
     }
 
