@@ -18,6 +18,7 @@ export JAVA_HOME=$HOME/.bin/jdk-17.0.20+8/
 
 
 sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+
 ./gradlew assembleDebug
 
 # How to change functionality
