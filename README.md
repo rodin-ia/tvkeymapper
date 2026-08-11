@@ -11,12 +11,12 @@ r stuff
 
 `mv cmdline-tools ~/Android/Sdk/cmdline-tools/lates`
 
-`
+```
 export ANDROID_HOME="$HOME/Android/Sdk"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
 export JAVA_HOME=$HOME/.bin/jdk-17.0.20+8/
-`
+```
 
 `sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"`
 
